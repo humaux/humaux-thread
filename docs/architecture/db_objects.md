@@ -49,7 +49,7 @@ grants (runtime roles):
 - role_migration_owner: UPDATE
 
 read by:
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -80,10 +80,10 @@ grants (runtime roles):
 read by:
 - (no process): `adapters::contribution_repo`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::public_runtime_qdrant`
-- (no process): `adapters::tests::public_trust`
-- (no process): `adapters::tests::support::public_anonymous_seam`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime_qdrant`
+- (no process): `public-pool::tests::public_trust`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -1413,11 +1413,9 @@ read by:
 - (no process): `maintenance::tests::onboarding`
 - process(cargo-xtask): `adapters::distill_repo`
 - process(cargo-xtask): `adapters::provisioning`
-- process(cargo-xtask): `adapters::public_repo`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(cargo-xtask): `xtask::e2e_onboard`
 - process(cargo-xtask): `xtask::e2e_seed`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-consolidation-worker): `adapters::consolidation_reasoner`
 - process(humaux-consolidation-worker): `adapters::contribution_entry_repo`
 - process(humaux-consolidation-worker): `adapters::contribution_reasoner`
@@ -1431,7 +1429,7 @@ read by:
 - process(humaux-private-worker): `adapters::contribution_entry_repo`
 - process(humaux-private-worker): `adapters::contribution_reasoner`
 - process(humaux-private-worker): `adapters::distill_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 - process(humaux-retrieval-worker): `adapters::distill_repo`
 
 written by:
@@ -1446,7 +1444,6 @@ written by:
 - (no process): `adapters::tests::project_continuity_0136`
 - (no process): `adapters::tests::project_continuity_read_0137`
 - (no process): `adapters::tests::projection_worker`
-- (no process): `adapters::tests::public_trust`
 - (no process): `adapters::tests::quota_and_rate`
 - (no process): `adapters::tests::reasoning_route_foundation`
 - (no process): `adapters::tests::reasoning_route_health_admission`
@@ -1469,6 +1466,7 @@ written by:
 - (no process): `gateway::tests::service_credentials`
 - (no process): `private-worker::tests::derived_dispatch_e2e`
 - (no process): `private-worker::tests::distill_hop_e2e`
+- (no process): `public-pool::tests::public_trust`
 - (no process): `retrieval-provider::tests::dashscope_live_smoke`
 - process(cargo-xtask): `adapters::membership_repo`
 - process(humaux-maintenance): `adapters::membership_repo`
@@ -2696,18 +2694,16 @@ grants (runtime roles):
 - role_public_worker: SELECT
 
 read by:
-- process(cargo-xtask): `adapters::public_repo`
 - process(cargo-xtask): `maintenance::rls_check`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-maintenance): `maintenance::rls_check`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
-- (no process): `adapters::tests::mechanism_observation`
-- (no process): `adapters::tests::public_provenance`
-- (no process): `adapters::tests::public_provenance_revocation_eval`
-- (no process): `adapters::tests::public_trust`
-- (no process): `adapters::tests::support::public_anonymous_seam`
+- (no process): `public-pool::tests::mechanism_observation`
+- (no process): `public-pool::tests::public_provenance`
+- (no process): `public-pool::tests::public_provenance_revocation_eval`
+- (no process): `public-pool::tests::public_trust`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 
 executed by:
 
@@ -4465,9 +4461,7 @@ read by:
 - (no process): `gateway::tests::mcp_gateway`
 - (no process): `maintenance::tests::onboarding`
 - process(cargo-xtask): `adapters::membership_repo`
-- process(cargo-xtask): `adapters::public_repo`
 - process(cargo-xtask): `xtask::e2e_onboard`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-consolidation-worker): `adapters::consolidation_reasoner`
 - process(humaux-consolidation-worker): `adapters::contribution_entry_repo`
 - process(humaux-consolidation-worker): `adapters::contribution_reasoner`
@@ -4476,7 +4470,7 @@ read by:
 - process(humaux-private-worker): `adapters::consolidation_reasoner`
 - process(humaux-private-worker): `adapters::contribution_entry_repo`
 - process(humaux-private-worker): `adapters::contribution_reasoner`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
 - (no process): `adapters::tests::a2_point_identity`
@@ -5089,7 +5083,7 @@ read by:
 written by:
 
 executed by:
-- (no process): `adapters::tests::mechanism_observation`
+- (no process): `public-pool::tests::mechanism_observation`
 
 ### `ops.audit_batches`
 - kind: table
@@ -5358,10 +5352,8 @@ written by:
 executed by:
 - (no process): `adapters::tests::phase9_assessed_contract`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_runtime`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_runtime`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.claim_public_dispatch_jobs`
 - kind: function (SECURITY DEFINER)
@@ -5379,9 +5371,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.column_vitality`
 - kind: table
@@ -5489,9 +5479,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.complete_public_dispatch_job`
 - kind: function (SECURITY DEFINER)
@@ -5509,9 +5497,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.consistency_reports`
 - kind: table
@@ -5844,9 +5830,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.distill_calls`
 - kind: table
@@ -6110,9 +6094,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.enqueue_anonymous_public_dispatch`
 - kind: function (SECURITY DEFINER)
@@ -6179,10 +6161,8 @@ written by:
 
 executed by:
 - (no process): `adapters::tests::phase9_assessed_contract`
-- (no process): `adapters::tests::public_runtime`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_runtime`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.fail_global_anonymous_public_dispatch`
 - kind: function (SECURITY DEFINER)
@@ -6200,9 +6180,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.fail_public_dispatch_job`
 - kind: function (SECURITY DEFINER)
@@ -6220,9 +6198,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.finalize_retrieval_provider_budget`
 - kind: function (SECURITY DEFINER)
@@ -6286,9 +6262,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.guard_anonymous_public_revocation_fact`
 - kind: function
@@ -6493,7 +6467,6 @@ written by:
 - (no process): `adapters::tests::private_projection_registry`
 - (no process): `adapters::tests::projection_claim`
 - (no process): `adapters::tests::projection_worker`
-- (no process): `adapters::tests::public_runtime`
 - (no process): `adapters::tests::recall_envelope_g23`
 - (no process): `adapters::tests::retrieval_query_sources`
 - (no process): `adapters::tests::retrieve_read_your_writes`
@@ -6503,7 +6476,6 @@ written by:
 - (no process): `adapters::tests::support::a2_fixture`
 - (no process): `adapters::tests::support::continuity_0137_cleanup`
 - (no process): `adapters::tests::support::operation_receipt_fixture`
-- (no process): `adapters::tests::support::public_anonymous_seam`
 - (no process): `adapters::tests::visible_index_count`
 - (no process): `admin::tests::probes`
 - (no process): `consolidation-worker::tests::derived_dispatch_e2e`
@@ -6516,6 +6488,8 @@ written by:
 - (no process): `private-worker::tests::distill_hop_e2e`
 - (no process): `private-worker::tests::m29_attribution_e2e`
 - (no process): `private-worker::tests::support::double_spend`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 - process(cargo-xtask): `adapters::jobs`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-consolidation-worker): `adapters::consolidate_repo`
@@ -6551,13 +6525,11 @@ written by:
 
 executed by:
 - (no process): `adapters::tests::contribution_self_principal_authority_0133`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-consolidation-worker): `adapters::contribution_entry_repo`
 - process(humaux-consolidation-worker): `adapters::contribution_reasoner`
 - process(humaux-private-worker): `adapters::contribution_entry_repo`
 - process(humaux-private-worker): `adapters::contribution_reasoner`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.maintenance_receipts`
 - kind: partitioned (monthly leaves: control.partition_registry)
@@ -6639,9 +6611,10 @@ read by:
 - process(humaux-maintenance): `maintenance::rls_check`
 
 written by:
-- (no process): `adapters::tests::mechanism_observation`
+- (no process): `public-pool::tests::mechanism_observation`
 - process(cargo-xtask): `adapters::mechanism_observation`
 - process(humaux-admin): `adapters::mechanism_observation`
+- process(humaux-public-worker): `adapters::mechanism_observation`
 
 executed by:
 
@@ -6676,9 +6649,10 @@ read by:
 - process(humaux-maintenance): `maintenance::rls_check`
 
 written by:
-- (no process): `adapters::tests::mechanism_observation`
+- (no process): `public-pool::tests::mechanism_observation`
 - process(cargo-xtask): `adapters::mechanism_observation`
 - process(humaux-admin): `adapters::mechanism_observation`
+- process(humaux-public-worker): `adapters::mechanism_observation`
 
 executed by:
 
@@ -6940,12 +6914,12 @@ read by:
 - (no process): `adapters::tests::note_replace`
 - (no process): `adapters::tests::phase9_assessed_contract`
 - (no process): `adapters::tests::project_continuity_read_0137_acceptance`
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::public_trust`
 - (no process): `adapters::tests::support::continuity_0137_cleanup`
 - (no process): `adapters::tests::support::contribution_fixture`
 - (no process): `consolidation-worker::tests::consolidation_hop_e2e`
 - (no process): `gateway::tests::read_decoupling`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `adapters::exact_census`
 - process(cargo-xtask): `adapters::memory_governance_repo`
 - process(cargo-xtask): `adapters::note_repo`
@@ -7168,7 +7142,7 @@ read by:
 
 written by:
 - (no process): `adapters::tests::phase9_exact_assessed_storage_binding`
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 
 executed by:
 
@@ -7188,9 +7162,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `ops.public_release_revocations`
 - kind: table
@@ -7215,12 +7187,10 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `maintenance::rls_check`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-maintenance): `maintenance::rls_check`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
 - (no process): `adapters::tests::contribution_repo`
@@ -10311,7 +10281,6 @@ read by:
 - (no process): `adapters::tests::evidence_task_runs`
 - (no process): `adapters::tests::facet_contract`
 - (no process): `adapters::tests::hot_path_indexes`
-- (no process): `adapters::tests::mechanism_observation`
 - (no process): `adapters::tests::support::continuity_0137_cleanup`
 - (no process): `gateway::tests::continuity_get`
 - (no process): `gateway::tests::semantic_recall_wiring`
@@ -10319,6 +10288,7 @@ read by:
 - (no process): `private-worker::tests::derived_dispatch_e2e`
 - (no process): `private-worker::tests::distill_hop_e2e`
 - (no process): `private-worker::tests::m29_attribution_e2e`
+- (no process): `public-pool::tests::mechanism_observation`
 - (no process): `testkit::tests::metrics::retrieval_completeness_total`
 - process(cargo-xtask): `adapters::affect_repo`
 - process(cargo-xtask): `adapters::context_repo`
@@ -12812,9 +12782,7 @@ written by:
 executed by:
 - (no process): `adapters::tests::phase9_assessed_contract`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `public.admit_anonymous_source`
 - kind: function (SECURITY DEFINER)
@@ -12859,7 +12827,7 @@ read by:
 - process(humaux-maintenance): `maintenance::rls_check`
 
 written by:
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 
 executed by:
 
@@ -12911,7 +12879,7 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -12974,9 +12942,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `public.claim_independence_attestations`
 - kind: table
@@ -13000,7 +12966,7 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -13029,15 +12995,13 @@ grants (runtime roles):
 - role_public_worker: INSERT(contribution_release_id,evaluation_id,root_source_id,source_content_hash)
 
 read by:
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
 written by:
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13061,18 +13025,17 @@ grants (runtime roles):
 - role_public_worker: INSERT(body_sha256,checks_complete,claim_id,contradiction_count,evaluation_id,evaluator_grant_version,evaluator_user_id,identity_incomplete,independent_support_count,moderation_state,object_revision,policy_version,rationale,support_count,synthesis_id,trusted_source_count)
 
 read by:
-- (no process): `adapters::tests::public_provenance_revocation_eval`
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_provenance_revocation_eval`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `adapters::mechanism_observation`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-admin): `adapters::mechanism_observation`
 - process(humaux-maintenance): `maintenance::rls_check`
+- process(humaux-public-worker): `adapters::mechanism_observation`
 
 written by:
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13100,24 +13063,23 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::public_provenance`
-- (no process): `adapters::tests::mechanism_observation`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_provenance_revocation_eval`
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::public_runtime_qdrant`
-- (no process): `adapters::tests::support::public_anonymous_seam`
+- (no process): `public-pool::public_provenance`
+- (no process): `public-pool::tests::mechanism_observation`
+- (no process): `public-pool::tests::public_provenance_revocation_eval`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime_qdrant`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 - process(cargo-xtask): `adapters::mechanism_observation`
 - process(humaux-admin): `adapters::mechanism_observation`
+- process(humaux-public-worker): `adapters::mechanism_observation`
 
 written by:
 - (no process): `adapters::contribution_repo`
 - (no process): `adapters::tests::contribution_repo`
-- (no process): `adapters::tests::public_provenance`
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_provenance`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13159,7 +13121,7 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -13186,13 +13148,11 @@ read by:
 written by:
 
 executed by:
-- (no process): `adapters::public_provenance`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_provenance`
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::public_provenance`
+- (no process): `public-pool::tests::public_provenance`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `public.eligible_objects`
 - kind: view
@@ -13216,15 +13176,14 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::public_trust`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `adapters::mechanism_observation`
-- process(cargo-xtask): `adapters::public_repo`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-admin): `adapters::mechanism_observation`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-maintenance): `maintenance::rls_check`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `adapters::mechanism_observation`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
 
@@ -13246,10 +13205,8 @@ read by:
 written by:
 
 executed by:
-- (no process): `adapters::tests::public_runtime`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_runtime`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `public.guard_anonymous_claim_trust_receipt_append_only`
 - kind: function
@@ -13394,7 +13351,7 @@ read by:
 written by:
 
 executed by:
-- (no process): `adapters::tests::public_trust`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -13478,7 +13435,7 @@ executed by:
 - (no process): `adapters::tests::phase9_assessed_contract`
 - (no process): `adapters::tests::phase9_exact_assessed_storage_binding`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::support::public_anonymous_seam`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 - process(humaux-consolidation-worker): `adapters::contribution_entry_repo`
 - process(humaux-consolidation-worker): `adapters::contribution_reasoner`
 - process(humaux-private-worker): `adapters::contribution_entry_repo`
@@ -13504,15 +13461,13 @@ grants (runtime roles):
 - role_public_worker: INSERT(check_version,detected,evaluation_id,signal_code)
 
 read by:
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::public_trust`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
 written by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13540,21 +13495,19 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::public_provenance`
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::support::public_anonymous_seam`
+- (no process): `public-pool::public_provenance`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 
 written by:
 - (no process): `adapters::contribution_repo`
 - (no process): `adapters::tests::contribution_repo`
-- (no process): `adapters::tests::mechanism_observation`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_provenance`
-- (no process): `adapters::tests::public_provenance_revocation_eval`
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::mechanism_observation`
+- (no process): `public-pool::tests::public_provenance`
+- (no process): `public-pool::tests::public_provenance_revocation_eval`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13577,9 +13530,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `public.public_receipt_matches`
 - kind: function
@@ -13592,12 +13543,12 @@ grants (runtime roles):
 - role_migration_owner: EXECUTE
 
 read by:
-- (no process): `adapters::tests::public_trust`
+- (no process): `public-pool::tests::public_trust`
 
 written by:
 
 executed by:
-- (no process): `adapters::tests::public_trust`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -13641,9 +13592,7 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
 
@@ -13712,7 +13661,7 @@ read by:
 written by:
 
 executed by:
-- (no process): `adapters::tests::public_trust`
+- (no process): `public-pool::tests::public_trust`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -13732,10 +13681,8 @@ read by:
 written by:
 
 executed by:
-- (no process): `adapters::tests::public_runtime`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_runtime`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `public.revoke_anonymous_source`
 - kind: function (SECURITY DEFINER)
@@ -13778,18 +13725,16 @@ grants (runtime roles):
 - role_retrieval_worker: SELECT
 
 read by:
-- (no process): `adapters::public_provenance`
+- (no process): `public-pool::public_provenance`
 
 written by:
 - (no process): `adapters::contribution_repo`
 - (no process): `adapters::tests::contribution_repo`
-- (no process): `adapters::tests::mechanism_observation`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_provenance`
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::mechanism_observation`
+- (no process): `public-pool::tests::public_provenance`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13818,20 +13763,18 @@ grants (runtime roles):
 
 read by:
 - (no process): `adapters::contribution_repo`
-- (no process): `adapters::public_provenance`
-- (no process): `adapters::tests::public_runtime`
-- (no process): `adapters::tests::support::public_anonymous_seam`
+- (no process): `public-pool::public_provenance`
+- (no process): `public-pool::tests::public_runtime`
+- (no process): `public-pool::tests::support::public_anonymous_seam`
 
 written by:
 - (no process): `adapters::tests::contribution_repo`
-- (no process): `adapters::tests::mechanism_observation`
 - (no process): `adapters::tests::phase9_assessed_contract`
 - (no process): `adapters::tests::phase9_independence_attestation`
-- (no process): `adapters::tests::public_provenance`
-- (no process): `adapters::tests::public_trust`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::mechanism_observation`
+- (no process): `public-pool::tests::public_provenance`
+- (no process): `public-pool::tests::public_trust`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13860,14 +13803,12 @@ grants (runtime roles):
 
 read by:
 - (no process): `adapters::contribution_repo`
-- (no process): `adapters::public_provenance`
+- (no process): `public-pool::public_provenance`
 
 written by:
 - (no process): `adapters::tests::contribution_repo`
-- (no process): `adapters::tests::public_provenance`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::tests::public_provenance`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 executed by:
 
@@ -13896,14 +13837,12 @@ grants (runtime roles):
 
 read by:
 - (no process): `adapters::contribution_repo`
-- (no process): `adapters::public_provenance`
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- (no process): `public-pool::public_provenance`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
 - (no process): `adapters::tests::contribution_repo`
-- (no process): `adapters::tests::public_provenance`
+- (no process): `public-pool::tests::public_provenance`
 
 executed by:
 
@@ -13953,9 +13892,7 @@ read by:
 written by:
 
 executed by:
-- process(cargo-xtask): `adapters::public_repo`
-- process(humaux-admin): `adapters::public_repo`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 ### `staging.assert_active_release_rights`
 - kind: function (SECURITY DEFINER)
@@ -14030,7 +13967,7 @@ grants (runtime roles):
 
 read by:
 - (no process): `adapters::tests::contribution_execution_repo_0131`
-- (no process): `adapters::tests::public_runtime`
+- (no process): `public-pool::tests::public_runtime`
 - process(cargo-xtask): `maintenance::rls_check`
 - process(humaux-maintenance): `maintenance::rls_check`
 
@@ -14186,16 +14123,14 @@ grants (runtime roles):
 
 read by:
 - (no process): `adapters::tests::contribution_pipeline`
-- (no process): `adapters::tests::mechanism_observation`
 - (no process): `adapters::tests::phase9_independence_attestation`
 - (no process): `adapters::tests::public_contribution_contract`
-- (no process): `adapters::tests::public_provenance`
 - (no process): `adapters::tests::support::contribution_fixture`
-- process(cargo-xtask): `adapters::public_repo`
+- (no process): `public-pool::tests::mechanism_observation`
+- (no process): `public-pool::tests::public_provenance`
 - process(cargo-xtask): `maintenance::rls_check`
-- process(humaux-admin): `adapters::public_repo`
 - process(humaux-maintenance): `maintenance::rls_check`
-- process(humaux-public-worker): `adapters::public_repo`
+- process(humaux-public-worker): `public-pool::public_repo`
 
 written by:
 - (no process): `adapters::contribution_repo`
